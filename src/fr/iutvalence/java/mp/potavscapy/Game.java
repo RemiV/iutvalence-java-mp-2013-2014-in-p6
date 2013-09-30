@@ -44,6 +44,8 @@ public class Game
      */
     public boolean potamochereTurn;
     
+    
+    
     // TODO (fixed) clarify comment and complete it
     /**
      * Install the bases : How many players (nbj) and which character is chosen (perso)
@@ -55,6 +57,7 @@ public class Game
         this.playerIndependant = nbj;
         this.potamochereChosen = perso;
         this.begining = true;
-        this.ending = false; 
+        this.ending = false;
+        this.potamochereTurn =true;
     } 
 }
