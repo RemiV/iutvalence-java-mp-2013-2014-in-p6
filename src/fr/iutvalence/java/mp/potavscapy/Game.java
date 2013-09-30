@@ -44,7 +44,10 @@ public class Game
      */
     public boolean potamochereTurn;
     
-    
+    /**
+     * notice a Map is used in a game. 
+     */
+    public Map mapUsed;
     
     // TODO (fixed) clarify comment and complete it
     /**
@@ -59,5 +62,6 @@ public class Game
         this.begining = true;
         this.ending = false;
         this.potamochereTurn =true;
+        
     } 
 }
