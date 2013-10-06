@@ -1,55 +1,51 @@
-// TODO (fixed) declare model-related classes in a package
 package fr.iutvalence.java.mp.potavscapy;
 
-
-
-// TODO (fixed) write a comment that really describe the intent of this class
-// according to the model
 /**  
  * class Game declaration : the principal class. It defines all we need to set up a game of "Potamochère vs Capybara" (begin, end, character choice,
  * number of players). The rules are in the README.md.
  */ 
-// TODO (fixed) rename class (english)
 public class Game
 {
-    // TODO (fixed) simply comment, it is useless to say that it is a field declaration
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     /** 
      * Notice the game start 
      */
     public boolean begining;
-    
-    // TODO (fixed) simply comment, it is useless to say that it is a field declaration
+
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     /**
      * Notice the game finish
      */
     public boolean ending;
     
-    
-    // TODO (fixed) rename field
-    // TODO (fixed) your model must be player-independant 
+    // TODO (explain it) what is the purpose of this field?
     /**
      * notice if the player is against the IA (1) or against an other player (0)
      */
     public boolean playerIndependant;
     
-    // TODO (fixed) rename field
-    // TODO (fixed) your model must be player-independant     
+    // TODO (explain it) what is the purpose of this field?
     /**
      * notice if the player choose the capybara (0) or the potamochère (1)
      */
     public boolean potamochereChosen;
     
+    // TODO (explain it) what is the purpose of this field?
     /**
      * notice if it's the capybara turn (0) or the potamochère turn (1).
      */
     public boolean potamochereTurn;
     
+    // TODO (fix) rename field (just map)
     /**
      * notice a Map is used in a game. 
      */
     public Map mapUsed;
     
-    // TODO (fixed) clarify comment and complete it
+    // TODO (fix) write a "real" comment describing how i the game once this constructor has been called
+    // TODO (fix) also document parameters
     /**
      * Install the bases : How many players (nbj) and which character is chosen (perso)
      * @param nbj 
@@ -57,11 +53,11 @@ public class Game
      */
     public Game (boolean nbj, boolean perso)
     {
+        // TODO (think about it) some fields look like local variables...
         this.playerIndependant = nbj;
         this.potamochereChosen = perso;
         this.begining = true;
         this.ending = false;
-        this.potamochereTurn =true;
-        
+        this.potamochereTurn =true;      
     } 
 }
