@@ -52,10 +52,17 @@ public class Map
   * corresponding to a type (SWAMP, TREE, WATER, HOLE and RIVER).
   */
  private int[][] mapSquare;
+ 
+ /**
+  * constructor Map which specifies the current attributes of the chosen map 
+  * @param size
+  * @throws MapException
+  */
 
- public Map(int size)
+ public Map(int size) throws MapException
  {
-     if (size != 5 | size != 10 | size != 15) throws new MapException(); 
+     if (size != 5 || size != 10 || size != 15) 
+         throw new MapException(); 
      
  }
  

@@ -7,4 +7,5 @@ package fr.iutvalence.java.mp.potavscapy;
  */
 public class MapException extends Exception
 {
+    System.out.println("Map size unfound !");
 }
