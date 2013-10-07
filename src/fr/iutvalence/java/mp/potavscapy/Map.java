@@ -7,29 +7,43 @@ package fr.iutvalence.java.mp.potavscapy;
 */
 public class Map 
 {
-    // TODO (fix) comment only this constant
+    // TODO (fixed) comment only this constant
     /**
-     * Defines the different types of cases with integer
+     * Define the WATER case : The capybara must link two WATER squares to win.
      */
     public final static int WATER=0;
     
-    // TODO (fix) comment this constant
+    // TODO (fixed) comment this constant
+    /**
+     * Define the TREE case : No animal can be on TREE squares.
+     */
     public final static int TREE=1;
 
-    // TODO (fix) comment this constant
+    // TODO (fixed) comment this constant
+    /**
+     * Define the SWAMP case : It's the basic square, all the animals can be on there.
+     */
     public final static int SWAMP=2;
     
-    // TODO (fix) comment this constant
+    // TODO (fixed) comment this constant
+    /**
+     * Define the HOLE case : When the potamochère dig a SWAMP square, 
+     * this square become a HOLE square. 
+     */
     public final static int HOLE=3;
     
-    // TODO (fix) comment this constant
+    // TODO (fixed) comment this constant
+    /**
+     * Define the RIVER case : When the capybara dig a SWAMP square, 
+     * this square become a RIVER square. 
+     */
     public final static int RIVER=4;
     
-    // TODO (fix) field should be private 
+    // TODO (fixed) field should be private 
  /**
   *  specifies the number of squares of the map (of the side) 
   *  */   
- public int size;
+ private int size;
 
  // TODO (fix) field should be private
  // TODO (fix) simplify comment, but also detail it ;-)
