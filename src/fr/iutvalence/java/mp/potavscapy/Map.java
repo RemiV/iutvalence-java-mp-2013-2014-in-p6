@@ -45,21 +45,21 @@ public class Map
   *  */   
  private int size;
 
- // TODO (fix) field should be private
- // TODO (fix) simplify comment, but also detail it ;-)
+ // TODO (fixed) field should be private
+ // TODO (fixed) simplify comment, but also detail it ;-)
  /**
-  * notice we need a 2D table to build the map.
+  * notice we need a 2D table to build the map. All the squares of the table have an integer
+  * corresponding to a type (SWAMP, TREE, WATER, HOLE and RIVER).
   */
- public int[][] mapSquare;
- 
- 
- // TODO (fix) instructions can only be written in constructors/methods
- /**
- * define a integer table gameMap to fill in with 0,1,2,3 or 4 according to the types of squares.
- */
-int[][] gameMap = null;
-gameMap = new Square[size][size];
+ private int[][] mapSquare;
 
+ public Map(int size)
+ {
+     if (size != 5 | size != 10 | size != 15) throws new MapException(); 
+     
+ }
+ 
+ 
 
  
 }

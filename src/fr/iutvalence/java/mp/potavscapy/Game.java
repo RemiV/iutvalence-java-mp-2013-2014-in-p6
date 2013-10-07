@@ -6,23 +6,23 @@ package fr.iutvalence.java.mp.potavscapy;
  */ 
 public class Game
 {
-    // TODO (fix) consider the field being private. Let them be public if and only if
+    // TODO (fixed) consider the field being private. Let them be public if and only if
     // you find at least a *** good *** reason to do so
     /** 
      * Notice the game start 
      */
-    public boolean begining;
+    private boolean begining;
 
-    // TODO (fix) consider the field being private. Let them be public if and only if
+    // TODO (fixed) consider the field being private. Let them be public if and only if
     // you find at least a *** good *** reason to do so
     /**
      * Notice the game finish
      */
-    public boolean ending;
+    private boolean ending;
     
     // TODO (explain it) what is the purpose of this field?
     /**
-     * notice if the player is against the IA (1) or against an other player (0)
+     * notice if the player is against the IA (1) or against an other player (0).
      */
     public boolean playerIndependant;
     
@@ -38,11 +38,11 @@ public class Game
      */
     public boolean potamochereTurn;
     
-    // TODO (fix) rename field (just map)
+    // TODO (fixed) rename field (just map)
     /**
      * notice a Map is used in a game. 
      */
-    public Map mapUsed;
+    public Map map;
     
     // TODO (fix) write a "real" comment describing how i the game once this constructor has been called
     // TODO (fix) also document parameters
@@ -51,13 +51,14 @@ public class Game
      * @param nbj 
      * @param perso 
      */
-    public Game (boolean nbj, boolean perso)
+    public Game (boolean nbj, boolean perso, int sizemap)
     {
         // TODO (think about it) some fields look like local variables...
         this.playerIndependant = nbj;
         this.potamochereChosen = perso;
         this.begining = true;
         this.ending = false;
-        this.potamochereTurn =true;      
+        this.potamochereTurn = true;
+        this.map = new Map(sizemap);
     } 
 }
