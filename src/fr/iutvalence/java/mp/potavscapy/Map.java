@@ -54,6 +54,46 @@ public class Map
      */
     public final static int HUGE=15;
     
+    /**
+     * Define the APPLE bonus : the potamochère need it to win.
+     */
+    public Location APPLE;
+    
+    /**
+     * Define the PUMPKIN bonus : it worths 10 APPLES.
+     */
+    public Location PUMPKIN;
+    
+    /**
+     * Define the ALLIGATOR bonus : the character who found it skip a turn.
+     */
+    public Location ALLIGATOR;
+    
+    /**
+     * Define the MAKI_CATTA bonus : the character who found it win a turn.
+     */
+    public Location MAKI_CATTA;
+    
+    /**
+     * Define the ARA bonus : it prevents the next animal who will be found.
+     */
+    public Location ARA;
+    
+    /**
+     * Define the GARARUFA bonus : changes the square in a WATER square.
+     */
+    public Location GARARUFA;
+    
+    /**
+     * Define the MAN bonus : it cuts a TREE (the square become a SWAMP). 
+     */
+    public Location MAN;
+    
+    /**
+     * Define the BEE bonus : it creates a TREE (a SWAMP become a TREE).
+     */
+    public Location BEE;
+    
     
     // TODO (fixed) field should be private 
  /**
@@ -84,7 +124,7 @@ public class Map
      else
      {
          this.size = size;
-         
+         Random.nextInt(4);
      }
       
      

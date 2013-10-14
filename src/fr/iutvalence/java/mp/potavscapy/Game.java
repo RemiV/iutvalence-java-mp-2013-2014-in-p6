@@ -49,14 +49,24 @@ public class Game
      * @param nbj 
      * @param perso 
      */
-    public Game (boolean nbj, boolean perso, int sizemap)
+    public Game (int sizemap)
     {
         // TODO (think about it) some fields look like local variables...
-        this.playerIndependant = nbj;
-        this.potamochereChosen = perso;
+        
         this.begining = true;
         this.ending = false;
         this.potamochereTurn = true;
         this.map = new Map(sizemap);
     } 
+    
+    /**
+     * Define the progress of the game and the rules.
+     */
+    public void play()
+    {
+        if (potamochereTurn = true)
+        {
+            ;
+        }
+    }
 }

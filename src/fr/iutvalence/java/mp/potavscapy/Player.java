@@ -14,7 +14,7 @@ public class Player
     public Location whereGo;
     
     /**
-     * Define the square where the player want to use his Man or his Boa. 
+     * Define the square where the player want to use his Man or his Bee. 
      */
     public Location WhereBonus;
     
