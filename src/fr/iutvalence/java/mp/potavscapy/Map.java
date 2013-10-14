@@ -124,7 +124,7 @@ public class Map
      else
      {
          this.size = size;
-         Random.nextInt(4);
+         java.util.Random.nextInt(4);
      }
       
      
