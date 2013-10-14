@@ -20,17 +20,15 @@ public class Game
      */
     private boolean ending;
     
-    // TODO (explain it) what is the purpose of this field?
     /**
-     * notice if the player is against the IA (1) or against an other player (0).
+     * Define a new player : the capybara.
      */
-    public boolean playerIndependant;
+    public Player capybara;
     
-    // TODO (explain it) what is the purpose of this field?
     /**
-     * notice if the player choose the capybara (0) or the potamochère (1)
+     * Define the second player : the potamochère.
      */
-    public boolean potamochereChosen;
+    public Player potamochere;
     
     // TODO (explain it) what is the purpose of this field?
     /**

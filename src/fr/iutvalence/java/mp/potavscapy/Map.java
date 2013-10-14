@@ -39,6 +39,22 @@ public class Map
      */
     public final static int RIVER=4;
     
+    /**
+     * Define the size TUTO: it's a little map to learn the bases (5x5 squares).
+     */
+    public final static int TUTO=5;
+    
+    /**
+     * Define the size MEDIUM : it's a normal map (10x10 squares) for simple games.
+     */
+    public final static int MEDIUM=10;
+    
+    /**
+     * Define the size HUGE : it's a big map (15x15 squares) for players who want challenges.
+     */
+    public final static int HUGE=15;
+    
+    
     // TODO (fixed) field should be private 
  /**
   *  specifies the number of squares of the map (of the side) 
@@ -61,8 +77,16 @@ public class Map
 
  public Map(int size) throws MapException
  {
-     if (size != 5 || size != 10 || size != 15) 
-         throw new MapException(); 
+     if (size != TUTO || size != MEDIUM || size != HUGE) 
+     {
+         throw new MapException();
+     }
+     else
+     {
+         this.size = size;
+         
+     }
+      
      
  }
  
