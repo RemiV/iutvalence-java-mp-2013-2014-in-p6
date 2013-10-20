@@ -12,11 +12,15 @@ public class Location
     /**
      * Define the abscissa of the point.
      */
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     public int x;
     
     /**
      * Define the second value of the location
      */
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     public int y;
     
     /**
@@ -24,10 +28,10 @@ public class Location
      * @param X the abscissa
      * @param Y the second value of the location
      */
-    public Location(int X, int Y)
+    public Location(int x, int y)
     {
-        this.x = X;
-        this.y = Y;
+        this.x = x;
+        this.y = y;
     }
     
 

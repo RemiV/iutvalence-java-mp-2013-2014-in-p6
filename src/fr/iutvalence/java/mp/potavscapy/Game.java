@@ -6,37 +6,40 @@ package fr.iutvalence.java.mp.potavscapy;
  */ 
 public class Game
 {
-    // TODO (fixed) consider the field being private. Let them be public if and only if
-    // you find at least a *** good *** reason to do so
+    // TODO (fix) this looks pretty like a local variable instead of a field
     /** 
      * Notice the game start 
      */
     private boolean begining;
 
-    // TODO (fixed) consider the field being private. Let them be public if and only if
-    // you find at least a *** good *** reason to do so
+    // TODO (fix) this looks pretty like a local variable instead of a field
     /**
      * Notice the game finish
      */
     private boolean ending;
     
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     /**
      * Define a new player : the capybara.
      */
     public Player capybara;
     
+    // TODO (fix) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     /**
      * Define the second player : the potamochère.
      */
     public Player potamochere;
     
-    // TODO (explain it) what is the purpose of this field?
+    // TODO (fix) this looks pretty like a local variable instead of a field
     /**
      * notice if it's the capybara turn (0) or the potamochère turn (1).
      */
     public boolean potamochereTurn;
     
-    // TODO (fixed) rename field (just map)
+    // TODO (fixed) consider the field being private. Let them be public if and only if
+    // you find at least a *** good *** reason to do so
     /**
      * notice a Map is used in a game. 
      */
@@ -51,8 +54,7 @@ public class Game
      */
     public Game (int sizemap)
     {
-        // TODO (think about it) some fields look like local variables...
-        
+        // TODO (think about it) some fields look like local variables...      
         this.begining = true;
         this.ending = false;
         this.potamochereTurn = true;

@@ -16,7 +16,7 @@ public class Player
     /**
      * Define the square where the player want to use his Man or his Bee. 
      */
-    public Location WhereBonus;
+    public Location whereBonus;
     
     
     
