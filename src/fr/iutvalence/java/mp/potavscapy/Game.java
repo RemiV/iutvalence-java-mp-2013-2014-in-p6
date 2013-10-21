@@ -18,19 +18,19 @@ public class Game
      */
     private boolean ending;
     
-    // TODO (fix) consider the field being private. Let them be public if and only if
+    // TODO (fixed) consider the field being private. Let them be public if and only if
     // you find at least a *** good *** reason to do so
     /**
      * Define a new player : the capybara.
      */
-    public Player capybara;
+    private Player capybara;
     
-    // TODO (fix) consider the field being private. Let them be public if and only if
+    // TODO (fixed) consider the field being private. Let them be public if and only if
     // you find at least a *** good *** reason to do so
     /**
      * Define the second player : the potamochère.
      */
-    public Player potamochere;
+    private Player potamochere;
     
     // TODO (fix) this looks pretty like a local variable instead of a field
     /**
@@ -43,7 +43,7 @@ public class Game
     /**
      * notice a Map is used in a game. 
      */
-    public Map map;
+    private Map map;
     
     // TODO (fix) write a "real" comment describing how i the game once this constructor has been called
     // TODO (fix) also document parameters

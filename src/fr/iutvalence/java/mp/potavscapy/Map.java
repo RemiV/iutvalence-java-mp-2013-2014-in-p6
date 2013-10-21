@@ -166,7 +166,8 @@ public class Map
 
     // TODO (fix) finish writing comment (parameters)
     /**
-     * constructor Map which specifies the current attributes of the chosen map
+     * constructor Map which specifies the current attributes of the chosen map.
+     * We use loops and random to put WATER, TREE and SWAMP squares.
      * 
      * @param size
      * @throws MapException
