@@ -39,39 +39,54 @@ public class Map
     /**
      * Define the size TUTO: it's a little map to learn the bases (5x5 squares).
      */
-    public final static int TUTO = 5;
+    public final static int EASY_MODE_GRID_SIZE = 5;
 
     /**
      * Define the size MEDIUM : it's a normal map (10x10 squares) for simple
      * games.
      */
-    public final static int MEDIUM = 10;
+    public final static int MEDIUM_MODE_GRID_SIZE = 10;
 
     /**
      * Define the size HUGE : it's a big map (15x15 squares) for players who
      * want challenges.
      */
-    public final static int HUGE = 15;
+    public final static int HARD_MODE_GRID_SIZE = 15;
 
     /**
      * Define the number of tree we want in the tutorial map.
      */
-    public final static int TREE_IN_TUTO = 5;
+    public final static int EASY_MODE_NUMBER_OF_TREES = 5;
 
     /**
      * Define the number of tree we want in the medium map.
      */
-    public final static int TREE_IN_MEDIUM = 20;
+    public final static int MEDIUM_MODE_NUMBER_OF_TREES = 20;
 
     /**
      * Define the number of tree we want in the huge map.
      */
-    public final static int TREE_IN_HUGE = 60;
+    public final static int HARD_MODE_NUMBER_OF_TREES = 60;
 
+    /**
+     * Define the number of apples we want in the tutorial map.
+     */
+    public final static int EASY_MODE_NUMBER_OF_APPLES = 5;
+
+    /**
+     * Define the number of apples we want in the medium map.
+     */
+    public final static int MEDIUM_MODE_NUMBER_OF_APPLES = 15;
+    /**
+     * Define the number of apples we want in the huge map.
+     */
+    public final static int HARD_MODE_NUMBER_OF_APPLES = 25;
+    
     /**
      * Define the APPLE bonus : the potamochère need it to win.
      */
     private Location appleLocation;
+    
 
     /**
      * Define the PUMPKIN bonus : it worths 10 APPLES.
@@ -131,104 +146,100 @@ public class Map
      * swamp squares.
      */
     private int numberOfSquares;
-
-    // TODO (fix) finish writing comment (parameters)
+    
     /**
      * constructor Map which specifies the current attributes of the chosen map.
-     * We use loops and random to put WATER, TREE and SWAMP squares.
+     * We use loops and random to put WATER, TREE and SWAMP squares:
+     * We put the two WATER squares in the both sides of the map (in the 
+     * top left hand corner and in the bottom right hand corner).
+     * Then, we put at random TREE squares.
+     * Finally, we put SWAMP in the empty squares.
+     * 
+     * 
+     * @param gridSize 
+     */
+    public void initMap(int gridSize)
+    {
+//        numberOfTrees is a counter to count trees on the map.
+//        numberOfSquares count the number of square we have filled.
+//        xForWater1 and yForWater1 are the  location of the first WATER square.
+//        xForWater2 and yForWater2 are the  location of the second WATER square.
+//        xForTree and yForTree are the location of TREE squares.
+//        xMap and yMap allow to cross the map to found empty squares.
+        
+        numberOfTrees = 0;
+           
+        this.size = gridSize;
+        
+        for (int line=0;line<gridSize;line++)
+            for (int column=0;column<gridSize;column++)
+            map[line][column] = SWAMP;
+        
+        int halfGridSize =  gridSize/2;
+        int xForWater1 = new Random().nextInt(halfGridSize);
+        int yForWater1 = new Random().nextInt(halfGridSize);
+        map[xForWater1][yForWater1] = WATER;
+        int xForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
+        int yForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
+        map[xForWater2][yForWater2] = WATER;
+
+        switch (gridSize)
+        {
+            case EASY_MODE_GRID_SIZE : numberOfTrees = EASY_MODE_NUMBER_OF_TREES;
+            case MEDIUM_MODE_GRID_SIZE : numberOfTrees = MEDIUM_MODE_NUMBER_OF_TREES;
+            case HARD_MODE_GRID_SIZE : numberOfTrees = HARD_MODE_NUMBER_OF_TREES;
+        }
+        
+        for (int tree=0; tree<numberOfTrees;tree++)
+        {
+            int xForTree = new Random().nextInt(gridSize+1);
+            int yForTree = new Random().nextInt(gridSize+1);
+            if (map[xForTree][yForTree] != WATER)
+            {
+                map[xForTree][yForTree] = TREE;
+            }
+        }       
+    }
+    
+    /**
+     * the function which positions the bonus item on the map
+     */
+    public void putBonus(int gridSize)
+    {
+        switch (gridSize)
+        {
+            case EASY_MODE_GRID_SIZE : numberOfApples = EASY_MODE_NUMBER_OF_APPLES;
+            case MEDIUM_MODE_GRID_SIZE : numberOfApples = MEDIUM_MODE_NUMBER_OF_APPLES;
+            case HARD_MODE_GRID_SIZE : numberOfApples = HARD_MODE_NUMBER_OF_APPLES;
+        }
+        for (int apple=0; apple<numberOfApples;apple++)
+        {
+            appleLocation.getX()=new Random().nextInt(gridSize+1); 
+            new Random().nextInt(gridSize+1);
+        }
+    }
+
+    // TODO (fixed) finish writing comment (parameters)
+    /**
+     * constructor Map which specifies the current attributes of the chosen map.
+     * We use loops and random to put WATER, TREE and SWAMP squares:
+     * If the size is available, we create the map with initMap.
      * 
      * @param size
      * @throws MapException
      */
-    // TODO (fix) simplify the constructor, it is not really readable
+    // TODO (fixed) simplify the constructor, it is not really readable
     public Map(int size) throws MapException
     {
-        numberOfTrees = 0;
-        numberOfSquares = 0;
-        if (size != TUTO || size != MEDIUM || size != HUGE)
+ 
+        if (size != EASY_MODE_GRID_SIZE || size != MEDIUM_MODE_GRID_SIZE || size != HARD_MODE_GRID_SIZE)
         {
             throw new MapException();
         }
-        else if (size == TUTO)
-        {
-            this.size = size;
-            int xForWater1 = new Random().nextInt(1);
-            int yForWater1 = new Random().nextInt(1);
-            map[xForWater1][yForWater1] = WATER;
-            int xForWater2 = 3 + new Random().nextInt(1);
-            int yForWater2 = 3 + new Random().nextInt(1);
-            map[xForWater2][yForWater2] = WATER;
-            while (numberOfTrees != TREE_IN_TUTO)
-            {
-                int xForTree = new Random().nextInt(size);
-                int yForTree = new Random().nextInt(size);
-                if (map[xForTree][yForTree] != WATER)
-                {
-                    map[xForTree][yForTree] = TREE;
-                    numberOfTrees = numberOfTrees + 1;
-                }
-            }
-
-        }
-        else if (size == MEDIUM)
-        {
-            this.size = size;
-            int xForWater1 = new Random().nextInt(4);
-            int yForWater1 = new Random().nextInt(4);
-            map[xForWater1][yForWater1] = WATER;
-            int xForWater = 6 + new Random().nextInt(4);
-            int yForWater = 6 + new Random().nextInt(4);
-            map[xForWater2][yForWater2] = WATER;
-            while (numberOfTrees != TREE_IN_MEDIUM)
-            {
-                int xForTree = new Random().nextInt(size);
-                int yForTree = new Random().nextInt(size);
-                if (map[xForTree][yForTree] != WATER)
-                {
-                    map[xForTree][yForTree] = TREE;
-                    numberOfTrees = numberOfTrees + 1;
-                }
-            }
-        }
         else
         {
-            this.size = size;
-            int xForWater1 = new Random().nextInt(6);
-            int yForWater1 = new Random().nextInt(6);
-            map[xForWater1][yForWater1] = WATER;
-            int xForWater = 8 + new Random().nextInt(6);
-            int yForWater = 8 + new Random().nextInt(6);
-            map[xForWater2][yForWater2] = WATER;
-            while (numberOfTrees != TREE_IN_HUGE)
-            {
-                int xForTree = new Random().nextInt(size);
-                int yForTree = new Random().nextInt(size);
-                if (map[xForTree][yForTree] != WATER)
-                {
-                    map[xForTree][yForTree] = TREE;
-                    numberOfTrees = numberOfTrees + 1;
-                }
-            }
+            initMap(size);
         }
-        while (numberOfSquares != (size * size))
-        {
-            int xMap = 0;
-            int yMap = 0;
-            if (map[xMap][yMap] != WATER || map[xMap][yMap] != SWAMP)
-            {
-                map[xMap][yMap] = SWAMP;
-                numberOfSquares = numberOfSquares + 1;
-                xMap = xMap + 1;
-                yMap = yMap + 1;
-            }
-            else
-            {
-                numberOfSquares = numberOfSquares + 1;
-                xMap = xMap + 1;
-                yMap = yMap + 1;
-            }
-        }
-
     }
 
 }

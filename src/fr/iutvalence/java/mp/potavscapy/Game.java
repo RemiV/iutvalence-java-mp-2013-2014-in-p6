@@ -64,8 +64,8 @@ public class Game
      */
     public void play()
     {
-        // TODO (fix) equality test is == not = (which is an assignment) 
-        if (potamochereTurn = true)
+        // TODO (fixed) equality test is == not = (which is an assignment) 
+        if (potamochereTurn == true)
         {
             ;
         }

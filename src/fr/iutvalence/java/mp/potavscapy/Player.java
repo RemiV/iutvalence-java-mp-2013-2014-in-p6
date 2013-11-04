@@ -10,6 +10,11 @@ public class Player
 {
 
     /**
+     * Define the position where the player is.
+     */
+    public Location currentLocation;
+    
+    /**
      * Define the square where the player want to go.
      */
     public Location whereGo;
