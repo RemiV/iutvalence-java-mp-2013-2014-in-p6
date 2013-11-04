@@ -13,14 +13,14 @@ public class Location
     /**
      * Define the abscissa of the point.
      */  
-    // TODO (fix) make this field immutable
-    private int x;
+    // TODO (fixed) make this field immutable
+    private final int x;
 
     /**
      * Define the second value of the location
      */
-    // TODO (fix) make this field immutable    
-    private int y;
+    // TODO (fixed) make this field immutable    
+    private final int y;
     
     /**
      * Create a new location to locate something (character or bonus) on the
@@ -37,6 +37,22 @@ public class Location
         this.y = y;
     }
     
-    // TODO (fix) declare getters
+    // TODO (fixed) declare getters
+    
+    /**
+     * get the x value.
+     */
+    public int getX()
+    {
+        return this.x;
+    }
+    
+    /**
+     *  get the y value.
+     */
+    public int getY()
+    {
+        return this.y;
+    }
 
 }
