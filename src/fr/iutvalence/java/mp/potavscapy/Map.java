@@ -219,7 +219,7 @@ public class Map
         }
     }
 
-    // TODO (fixed) finish writing comment (parameters)
+    // TODO (fix) finish writing comment (comment parameters)
     /**
      * constructor Map which specifies the current attributes of the chosen map.
      * We use loops and random to put WATER, TREE and SWAMP squares:
@@ -228,10 +228,9 @@ public class Map
      * @param size
      * @throws MapException
      */
-    // TODO (fixed) simplify the constructor, it is not really readable
     public Map(int size) throws MapException
     {
- 
+        // TODO (fix) the following if/else can be simplified
         if (size != EASY_MODE_GRID_SIZE || size != MEDIUM_MODE_GRID_SIZE || size != HARD_MODE_GRID_SIZE)
         {
             throw new MapException();
@@ -241,5 +240,4 @@ public class Map
             initMap(size);
         }
     }
-
 }

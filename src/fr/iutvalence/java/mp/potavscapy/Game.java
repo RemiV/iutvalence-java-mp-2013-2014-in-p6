@@ -63,8 +63,7 @@ public class Game
      * Define the progress of the game and the rules.
      */
     public void play()
-    {
-        // TODO (fixed) equality test is == not = (which is an assignment) 
+    { 
         if (potamochereTurn == true)
         {
             ;

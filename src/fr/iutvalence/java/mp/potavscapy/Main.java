@@ -7,7 +7,7 @@ package fr.iutvalence.java.mp.potavscapy;
  */
 public class Main
 {
-    // TODO (fixed) write comment
+    // TODO (fix) write comment
     
     public static void main(String[] args)
     {
