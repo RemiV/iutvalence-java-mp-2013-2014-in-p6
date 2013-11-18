@@ -50,6 +50,13 @@ public class Bonus
      */
     public final static int BEE = 7;
     
+    /**
+     * notice we need a 2D table to build the bonus map. All the squares of the table
+     * have an integer corresponding to a type (APPLE, PUMPKIN, ARA,...).
+     */
+    private int[][] bonusMap;
+    
+    
     
     
 }

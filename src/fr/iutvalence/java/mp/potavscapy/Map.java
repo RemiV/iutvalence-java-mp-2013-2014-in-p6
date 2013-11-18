@@ -82,46 +82,7 @@ public class Map
      */
     public final static int HARD_MODE_NUMBER_OF_APPLES = 25;
     
-    /**
-     * Define the APPLE bonus : the potamochère need it to win.
-     */
-    private Location appleLocation;
-    
 
-    /**
-     * Define the PUMPKIN bonus : it worths 10 APPLES.
-     */
-    private Location pumpkinLocation;
-
-    /**
-     * Define the ALLIGATOR bonus : the character who found it skip a turn.
-     */
-    private Location alligatorLocation;
-
-    /**
-     * Define the MAKI CATTA bonus : the character who found it win a turn.
-     */
-    private Location makiCattaLocation;
-
-    /**
-     * Define the ARA bonus : it prevents the next animal who will be found.
-     */
-    private Location araLocation;
-
-    /**
-     * Define the GARARUFA bonus : changes the square in a WATER square.
-     */
-    private Location gararufaLocation;
-
-    /**
-     * Define the MAN bonus : it cuts a TREE (the square become a SWAMP).
-     */
-    private Location manLocation;
-
-    /**
-     * Define the BEE bonus : it creates a TREE (a SWAMP become a TREE).
-     */
-    private Location beeLocation;
 
     /**
      * specifies the number of squares of the map (of the side)
@@ -146,6 +107,7 @@ public class Map
      * swamp squares.
      */
     private int numberOfSquares;
+
     
     /**
      * constructor Map which specifies the current attributes of the chosen map.
@@ -203,9 +165,11 @@ public class Map
     
     /**
      * the function which positions the bonus item on the map
+     * PROBABLY MUST BE DESTRUCTED
      */
     public void putBonus(int gridSize)
     {
+        
         switch (gridSize)
         {
             case EASY_MODE_GRID_SIZE : numberOfApples = EASY_MODE_NUMBER_OF_APPLES;
@@ -214,8 +178,12 @@ public class Map
         }
         for (int apple=0; apple<numberOfApples;apple++)
         {
-            appleLocation.getX()=new Random().nextInt(gridSize+1); 
-            new Random().nextInt(gridSize+1);
+            int xForApple = new Random().nextInt(gridSize+1);
+            int yForApple = new Random().nextInt(gridSize+1);
+            if (map[xForApple][yForApple]!=TREE ||map[xForApple][yForApple]!=WATER)
+            {
+                if ()
+            }
         }
     }
 

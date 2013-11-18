@@ -53,6 +53,7 @@ public class Game
     public Game(int sizemap)
     {
         // TODO (think about it) some fields look like local variables...
+        //TODO (fix) Add Bonus according to the landscape map.
         this.beginning = true;
         this.ending = false;
         this.potamochereTurn = true;
@@ -63,7 +64,7 @@ public class Game
      * Define the progress of the game and the rules.
      */
     public void play()
-    { 
+    {
         if (potamochereTurn == true)
         {
             ;
