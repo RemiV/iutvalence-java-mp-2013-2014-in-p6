@@ -20,6 +20,7 @@ public class Location
      */    
     private final int y;
     
+    
     /**
      * Create a new location to locate something (character or bonus) on the
      * map.
@@ -27,7 +28,7 @@ public class Location
      * @param x
      *            the abscissa
      * @param y
-     *            the second value of the location
+     *            the ordinate of the location
      */
     public Location(int x, int y)
     {
@@ -35,22 +36,24 @@ public class Location
         this.y = y;
     }
     
-    // TODO (fix) finish writing comment
+    // TODO (fixed) finish writing comment
     /**
-     * get the x value.
+     * get the abscissa of the location.
      */
     public int getX()
     {
         return this.x;
     }
 
-    // TODO (fix) finish writing comment
+    // TODO (fixed) finish writing comment
     /**
-     *  get the y value.
+     *  get the ordinate of the location.
      */
     public int getY()
     {
         return this.y;
     }
+    
+
 
 }
