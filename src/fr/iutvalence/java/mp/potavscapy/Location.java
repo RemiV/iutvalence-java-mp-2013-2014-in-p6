@@ -36,7 +36,7 @@ public class Location
         this.y = y;
     }
     
-    // TODO (fixed) finish writing comment
+    // TODO (fix) finish writing comment
     /**
      * get the abscissa of the location.
      */
@@ -45,7 +45,7 @@ public class Location
         return this.x;
     }
 
-    // TODO (fixed) finish writing comment
+    // TODO (fix) finish writing comment
     /**
      *  get the ordinate of the location.
      */
