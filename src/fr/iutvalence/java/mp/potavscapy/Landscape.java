@@ -6,7 +6,7 @@ import java.util.Random;
  * class which defines the game environment (size, number of squares)
  * 
  */
-public class Map
+public class Landscape
 {
     /**
      * Define the WATER case : The capybara must link two WATER squares to win.
@@ -68,19 +68,7 @@ public class Map
      */
     public final static int HARD_MODE_NUMBER_OF_TREES = 60;
 
-    /**
-     * Define the number of apples we want in the tutorial map.
-     */
-    public final static int EASY_MODE_NUMBER_OF_APPLES = 5;
-
-    /**
-     * Define the number of apples we want in the medium map.
-     */
-    public final static int MEDIUM_MODE_NUMBER_OF_APPLES = 15;
-    /**
-     * Define the number of apples we want in the huge map.
-     */
-    public final static int HARD_MODE_NUMBER_OF_APPLES = 25;
+    
     
 
 
@@ -94,7 +82,7 @@ public class Map
      * have an integer corresponding to a type (SWAMP, TREE, WATER, HOLE and
      * RIVER).
      */
-    private int[][] map;
+    public int[][] map;
 
     /**
      * Define the tree counter which help us to build the map to regulate the
@@ -120,7 +108,7 @@ public class Map
      * 
      * @param gridSize 
      */
-    public void initMap(int gridSize)
+    public void initLandscape(int gridSize)
     {
 //        numberOfTrees is a counter to count trees on the map.
 //        numberOfSquares count the number of square we have filled.
@@ -163,29 +151,7 @@ public class Map
         }       
     }
     
-    /**
-     * the function which positions the bonus item on the map
-     * PROBABLY MUST BE DESTRUCTED
-     */
-    public void putBonus(int gridSize)
-    {
-        
-        switch (gridSize)
-        {
-            case EASY_MODE_GRID_SIZE : numberOfApples = EASY_MODE_NUMBER_OF_APPLES;
-            case MEDIUM_MODE_GRID_SIZE : numberOfApples = MEDIUM_MODE_NUMBER_OF_APPLES;
-            case HARD_MODE_GRID_SIZE : numberOfApples = HARD_MODE_NUMBER_OF_APPLES;
-        }
-        for (int apple=0; apple<numberOfApples;apple++)
-        {
-            int xForApple = new Random().nextInt(gridSize+1);
-            int yForApple = new Random().nextInt(gridSize+1);
-            if (map[xForApple][yForApple]!=TREE ||map[xForApple][yForApple]!=WATER)
-            {
-                if ()
-            }
-        }
-    }
+
 
     // TODO (fix) finish writing comment (comment parameters)
     /**
@@ -196,7 +162,7 @@ public class Map
      * @param size
      * @throws MapException
      */
-    public Map(int size) throws MapException
+    public Landscape(int size) throws MapException
     {
         // TODO (fix) the following if/else can be simplified
         if (size != EASY_MODE_GRID_SIZE || size != MEDIUM_MODE_GRID_SIZE || size != HARD_MODE_GRID_SIZE)
@@ -205,7 +171,16 @@ public class Map
         }
         else
         {
-            initMap(size);
+            initLandscape(size);
         }
+    }
+    
+    /**
+     * Return the map size.
+     * @return
+     */
+    public int getSize()
+    {
+        return this.size;
     }
 }
