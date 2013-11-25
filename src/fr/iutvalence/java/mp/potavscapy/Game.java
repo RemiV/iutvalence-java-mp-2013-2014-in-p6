@@ -25,6 +25,7 @@ public class Game
      * Define a new player : the capybara.
      */
     private Player capybara;
+    
 
     /**
      * Define the second player : the potamochère.
@@ -114,17 +115,40 @@ public class Game
                //pumpkin setting
                int xForPumpkin = new Random().nextInt(gridSize);
                int yForPumpkin = new Random().nextInt(gridSize);
-               if ( (map.map[xForPumpkin][yForPumpkin] != map.WATER ) || ( map.map[xForPumpkin][yForPumpkin] != map.TREE ) && ( bonus.bonusMap[xForPumpkin][yForPumpkin] == bonus.EMPTY ) )
+               while ( (map.map[xForPumpkin][yForPumpkin] != map.WATER ) || ( map.map[xForPumpkin][yForPumpkin] != map.TREE ) && ( bonus.bonusMap[xForPumpkin][yForPumpkin] == bonus.EMPTY ) )
                {
                    xForPumpkin = new Random().nextInt(gridSize);
                    yForPumpkin = new Random().nextInt(gridSize);
                    
                }
-               bonus.bonusMap[xForPumpkin][yForPumpkin] = bonus.GARARUFA;
+               bonus.bonusMap[xForPumpkin][yForPumpkin] = bonus.PUMPKIN;
            }
            //if the size is HUGE, we continue to put bonus ont he map.
+           if (gridSize == map.HARD_MODE_GRID_SIZE)
+           {
+               // put the man and the bee bonus
+               int xForMan = new Random().nextInt(gridSize);
+               int yForMan = new Random().nextInt(gridSize);
+               while ( (map.map[xForMan][yForMan] != map.WATER ) || ( map.map[xForMan][yForMan] != map.TREE ) && ( bonus.bonusMap[xForMan][yForMan] == bonus.EMPTY ) )
+               {
+                   xForMan = new Random().nextInt(gridSize);
+                   yForMan = new Random().nextInt(gridSize);
+                   
+               }
+               bonus.bonusMap[xForMan][yForMan] = bonus.MAN;
+               //the bee
+               int xForBee = new Random().nextInt(gridSize);
+               int yForBee = new Random().nextInt(gridSize);
+               while ( (map.map[xForBee][yForBee] != map.WATER ) || ( map.map[xForBee][yForBee] != map.TREE ) && ( bonus.bonusMap[xForBee][yForBee] == bonus.EMPTY ) )
+               {
+                   xForBee = new Random().nextInt(gridSize);
+                   yForBee = new Random().nextInt(gridSize);
+                   
+               }
+               bonus.bonusMap[xForBee][yForBee] = bonus.BEE;
+           }
        }
-    }
+    
 
     // TODO (fix) write a "real" comment describing how i the game once this
     // constructor has been called
@@ -144,12 +168,27 @@ public class Game
         this.beginning = true;
         this.ending = false;
         this.potamochereTurn = true;
+        
         this.map = new Landscape(sizemap);
         this.bonusMap = new Bonus(sizemap);
-        
-     
+        this.putBonus(map, bonusMap);
+        capybara.currentLocation = new Location(map.xForWater1, map.yForWater1);
+
     }
 
+    /**
+     * Defines what happen when a player was put on a square
+     */
+    public void arrive(Player character, Location toGo)
+    {
+        if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.ALLIGATOR)
+        {
+         character.skipTurn = true;   
+        }
+        else if ()
+     
+    }
+    
     /**
      * Define the progress of the game and the rules.
      */
@@ -157,7 +196,13 @@ public class Game
     {
         if (potamochereTurn == true)
         {
-            ;
+            int XToGo = potamochere.whereGo.getX();
+            int YToGo = potamochere.whereGo.getY();
+            if (potamochere.skipTurn == false && map.map[XToGo][YToGo] != map.WATER || map.map[XToGo][YToGo] != map.TREE )
+            {
+                potamochere.currentLocation = new Location(XToGo, YToGo);
+                map.map[XToGo][YToGo] = map.HOLE;
+                
         }
     }
 }

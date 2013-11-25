@@ -23,5 +23,10 @@ public class Player
      * Define the square where the player want to use his Man or his Bee.
      */
     public Location whereBonus;
+    
+    /**
+     * Define if the player must skip his turn or not;
+     */
+    public boolean skipTurn;
 
 }

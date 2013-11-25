@@ -1,5 +1,7 @@
 package fr.iutvalence.java.mp.potavscapy;
 
+import javax.swing.JButton;
+
 /**
  * Create a main class for set the game.
  * @author vivierr
@@ -11,8 +13,14 @@ public class Main
     
     public static void main(String[] args)
     {
-        new Game(nbj, perso, sizemap).play();
-
+        System.out.println("Bienvenue ! Veuillez choisir la taille de la carte de jeu :");
+        JButton btnTuto = new JButton("Tuto");
+        JButton btnMedium = new JButton("Normal");
+        JButton btnHuge = new JButton("Difficile");
+        
+        
+        new Game(sizemap).play();   
+        
     }
 
 }

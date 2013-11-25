@@ -96,6 +96,16 @@ public class Landscape
      */
     private int numberOfSquares;
 
+    /**
+     * Define the X location of the first water square to easy the initialization of the capybara. 
+     */
+    public int xForWater1;
+    
+    /**
+     * Define the Y location of the first water square to easy the initialization of the capybara. 
+     */
+    public int yForWater1;
+    
     
     /**
      * constructor Map which specifies the current attributes of the chosen map.
@@ -126,8 +136,8 @@ public class Landscape
             map[line][column] = SWAMP;
         
         int halfGridSize =  gridSize/2;
-        int xForWater1 = new Random().nextInt(halfGridSize);
-        int yForWater1 = new Random().nextInt(halfGridSize);
+        xForWater1 = new Random().nextInt(halfGridSize);
+        yForWater1 = new Random().nextInt(halfGridSize);
         map[xForWater1][yForWater1] = WATER;
         int xForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
         int yForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
