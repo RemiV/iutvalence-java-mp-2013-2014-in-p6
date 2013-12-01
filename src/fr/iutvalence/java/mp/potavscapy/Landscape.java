@@ -36,6 +36,7 @@ public class Landscape
      */
     public final static int RIVER = 4;
 
+    // TODO (fix) duplicates constants (see Bonus)
     /**
      * Define the size TUTO: it's a little map to learn the bases (5x5 squares).
      */

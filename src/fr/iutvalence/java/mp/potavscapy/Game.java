@@ -36,6 +36,7 @@ public class Game
     /**
      * notice if it's the capybara turn (0) or the potamochère turn (1).
      */
+    // TODO (fix) should be private
     public boolean potamochereTurn;
 
     /**
@@ -48,15 +49,18 @@ public class Game
      */
     private Bonus bonusMap;
     
+    // TODO (fix) finish writing comment (parameters)
     /**
      * Put the bonus in function of the landscape and the map size.
      */
+    // TODO (fix) should be private
     public void putBonus(Landscape map, Bonus bonus)
     {
         bonus.numberOfApples = 0;
        int gridSize = map.getSize();
        switch (gridSize)
-       {
+       {        
+           // TODO (fix) fix warning
            case map.EASY_MODE_GRID_SIZE : bonus.numberOfApples = bonus.EASY_MODE_NUMBER_OF_APPLES;
            case map.MEDIUM_MODE_GRID_SIZE : bonus.numberOfApples = bonus.MEDIUM_MODE_NUMBER_OF_APPLES;
            case map.HARD_MODE_GRID_SIZE : bonus.numberOfApples = bonus.HARD_MODE_NUMBER_OF_APPLES;
@@ -153,6 +157,7 @@ public class Game
     // TODO (fix) write a "real" comment describing how i the game once this
     // constructor has been called
     // TODO (fix) also document parameters
+    // TODO (fix) move the constructor after field and before methods
     /**
      * Install the bases : How many players (nbj) and which character is chosen
      * (perso)
@@ -179,6 +184,7 @@ public class Game
     /**
      * Defines what happen when a player was put on a square
      */
+    // TODO (fix) should be private
     public void arrive(Player character, Location toGo)
     {
         if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.ALLIGATOR)
@@ -194,6 +200,7 @@ public class Game
      */
     public void play()
     {
+        // TODO (fix) simplify test
         if (potamochereTurn == true)
         {
             int XToGo = potamochere.whereGo.getX();
