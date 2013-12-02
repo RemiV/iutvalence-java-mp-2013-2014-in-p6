@@ -1,6 +1,7 @@
 package fr.iutvalence.java.mp.potavscapy;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * class Game declaration : the principal class. It defines all we need to set
@@ -31,6 +32,11 @@ public class Game
      * Define the second player : the potamochère.
      */
     private Player potamochere;
+    
+    /**
+     * counter which gives the number of apples discovered by potamochère
+     */
+    private int AppleCounter;
 
     // TODO (fix) this looks pretty like a local variable instead of a field
     /**
@@ -169,11 +175,11 @@ public class Game
     public Game(int sizemap) throws MapException
     {
         // TODO (think about it) some fields look like local variables...
-        //TODO (fix) Add Bonus according to the landscape map.
+        //TODO (fixed) Add Bonus according to the landscape map.
         this.beginning = true;
         this.ending = false;
-        this.potamochereTurn = true;
-        
+        this.potamochere = new Player(true);
+        this.capybara = new Player(false);
         this.map = new Landscape(sizemap);
         this.bonusMap = new Bonus(sizemap);
         this.putBonus(map, bonusMap);
@@ -184,32 +190,120 @@ public class Game
     /**
      * Defines what happen when a player was put on a square
      */
-    // TODO (fix) should be private
-    public void arrive(Player character, Location toGo)
+    // TODO (fixed) should be private
+    private void arrive(Player character, Location toGo)
     {
+        
+        int XToGo = toGo.getX();
+        int YToGo = toGo.getY();
+        
+        if (character.getBird()== false) //if the player don't have the bird, we check the animals
+        {
+            
         if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.ALLIGATOR)
         {
-         character.skipTurn = true;   
+         character.setSkipTurn() ;
+         
         }
-        else if ()
-     
+        else if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.ARA)
+        {
+            character.setBird();
+        }
+        else if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.GARARUFA)
+        {
+            this.map.map[XToGo][YToGo]= map.WATER;
+        }
+        
+        else if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.MAKICATTA)
+        {
+            character.setStayTurn();
+        }
+        else if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.MAN)
+        {
+            Scanner XChoosen = new Scanner(System.in);
+            int X = XChoosen.nextInt();
+            Scanner YChoosen = new Scanner(System.in);
+            int Y = YChoosen.nextInt();
+            Location toUproot = new Location(X, Y); 
+            this.uproot(toUproot);
+        }
+        
+        else if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.BEE)
+        {
+            Scanner XChoosen = new Scanner(System.in);
+            int X = XChoosen.nextInt();
+            Scanner YChoosen = new Scanner(System.in);
+            int Y = YChoosen.nextInt();
+            Location toPlant = new Location(X, Y); 
+            this.plant(toPlant);
+        }
+        
+        }// end of the animal checking
+        
+        
+        if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.APPLE)
+        {
+           this.AppleCounter=this.AppleCounter+1; 
+        }
+        if (this.bonusMap.bonusMap[XToGo][YToGo] == Bonus.PUMPKIN)
+        {
+            this.AppleCounter=this.AppleCounter+10;
+        }
+        
+
+        this.bonusMap.bonusMap[XToGo][YToGo] = Bonus.EMPTY;
     }
     
+    /**
+     * to eradicate a tree in a location
+     */
+    private void uproot(Location toUproot)
+    {
+        int XToUproot = toUproot.getX();
+        int YToUproot = toUproot.getY();
+        if (this.map.map[XToUproot][YToUproot] == this.map.TREE)
+            this.map.map[XToUproot][YToUproot] = this.map.SWAMP;    
+    }
+    
+    /**
+     * To plant a tree on a swamp case
+     */
+    private void plant(Location toPlant)
+    {
+        int XToPlant = toPlant.getX();
+        int YToPlant = toPlant.getY();
+        if (this.capybara.currentLocation != toPlant && this.map.map[XToPlant][YToPlant] == this.map.SWAMP)
+            this.map.map[XToPlant][YToPlant] = this.map.TREE;
+    }
+    
+
     /**
      * Define the progress of the game and the rules.
      */
     public void play()
     {
+        while (this.ending == false)
+        {
         // TODO (fix) simplify test
-        if (potamochereTurn == true)
+        if (potamochere.getTurn() == true)
         {
             int XToGo = potamochere.whereGo.getX();
             int YToGo = potamochere.whereGo.getY();
-            if (potamochere.skipTurn == false && map.map[XToGo][YToGo] != map.WATER || map.map[XToGo][YToGo] != map.TREE )
+            if ( potamochere.getTurn() != false && map.map[XToGo][YToGo] != map.WATER || map.map[XToGo][YToGo] != map.TREE )
             {
                 potamochere.currentLocation = new Location(XToGo, YToGo);
                 map.map[XToGo][YToGo] = map.HOLE;
+                this.arrive(potamochere, potamochere.currentLocation);
+                potamochere.setTurn();
                 
+             }
         }
-    }
+        else
+        {
+            int XToGo = capybara.whereGo.getX();
+            int YToGo = capybara.whereGo.getY();
+            //TODO (fix) capybara can move only on square next him
+        }
+          }
+        }
 }

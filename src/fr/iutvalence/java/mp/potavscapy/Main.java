@@ -15,10 +15,8 @@ public class Main
     {
         System.out.println("Bienvenue ! Veuillez choisir la taille de la carte de jeu :");
        
-        // TODO (fix) remove this, no GUI for the moment
-        JButton btnTuto = new JButton("Tuto");
-        JButton btnMedium = new JButton("Normal");
-        JButton btnHuge = new JButton("Difficile");
+        // TODO (fixed) remove this, no GUI for the moment
+        
         
         
         new Game(sizemap).play();   

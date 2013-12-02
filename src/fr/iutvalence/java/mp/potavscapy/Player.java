@@ -30,9 +30,101 @@ public class Player
     /**
      * Define if the player must skip his turn or not;
      */
-    // TODO (fix) should be private
-    public boolean skipTurn;
-
+    // TODO (fixed) should be private
+    private boolean skipTurn;
+    
+    /**
+     * Define if the player must stay his turn or not;
+     */
+    private boolean stayTurn;
+    
+    /**
+     * boolean variable which announces for a player if it's his turn to play
+     */
+    private boolean turn;
+    
+    /**
+     * defines if the player have an Ara (to skip a bonus)
+     */
+    private boolean bird;
+    
     
     // TODO (fix) constructor, methods ?
+    /**
+     * constructor of the Player object (creates a new player)
+     * @param t
+     */
+    public Player (boolean t)
+    {
+        this.turn=t;
+        this.skipTurn=false;
+        this.stayTurn=false;
+        this.bird=false;
+    }
+    
+    /**
+     * methode to make a player skip turn
+     */
+    public void setSkipTurn ()
+    {
+        if (this.skipTurn==false)
+            this.skipTurn=true;
+        else this.skipTurn=false;
+    }
+    
+    /**
+     * bird getter
+     */
+    public boolean getBird()
+    {
+        return this.bird;
+    }
+    
+    /**
+     * bird setter
+     */
+    public void setBird()
+    {
+        if (this.bird==true)
+                this.bird=false;
+        else this.bird=true;
+    }
+    
+    /**
+     * turn getter
+     */
+    public boolean getTurn()
+    {
+        if (this.skipTurn==true)
+            {
+            return false;
+            }
+        if (this.stayTurn==true)
+        {
+            return true;
+        }
+        return true;
+    }
+    
+    /**
+     * turn setter
+     */
+    public void setTurn()
+    {
+        if (this.turn==true)
+            this.turn=false;
+        else this.turn=true;
+    }
+    
+    /**
+     * methode to make a player stay his turn
+     */
+    public void setStayTurn()
+    {
+        if (this.stayTurn==false)
+            this.stayTurn=true;
+        else this.stayTurn=false;
+    }
+    
+
 }
