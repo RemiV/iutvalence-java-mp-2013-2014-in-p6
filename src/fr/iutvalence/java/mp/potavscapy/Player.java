@@ -30,7 +30,6 @@ public class Player
     /**
      * Define if the player must skip his turn or not;
      */
-    // TODO (fixed) should be private
     private boolean skipTurn;
     
     /**

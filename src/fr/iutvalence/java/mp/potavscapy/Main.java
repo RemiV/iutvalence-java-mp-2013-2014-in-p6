@@ -14,11 +14,6 @@ public class Main
     public static void main(String[] args)
     {
         System.out.println("Bienvenue ! Veuillez choisir la taille de la carte de jeu :");
-       
-        // TODO (fixed) remove this, no GUI for the moment
-        
-        
-        
         new Game(sizemap).play();   
         
     }

@@ -175,7 +175,6 @@ public class Game
     public Game(int sizemap) throws MapException
     {
         // TODO (think about it) some fields look like local variables...
-        //TODO (fixed) Add Bonus according to the landscape map.
         this.beginning = true;
         this.ending = false;
         this.potamochere = new Player(true);
@@ -190,7 +189,6 @@ public class Game
     /**
      * Defines what happen when a player was put on a square
      */
-    // TODO (fixed) should be private
     private void arrive(Player character, Location toGo)
     {
         
