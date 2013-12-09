@@ -107,6 +107,15 @@ public class Landscape
      */
     public int yForWater1;
     
+    /**
+     * Define the X location of the second water square to easy the win condition of the capybara. 
+     */
+    public int xForWater2;
+    
+    /**
+     * Define the Y location of the second water square to easy the win condition of the capybara. 
+     */
+    public int yForWater2;
     
     /**
      * constructor Map which specifies the current attributes of the chosen map.
@@ -140,8 +149,8 @@ public class Landscape
         xForWater1 = new Random().nextInt(halfGridSize);
         yForWater1 = new Random().nextInt(halfGridSize);
         map[xForWater1][yForWater1] = WATER;
-        int xForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
-        int yForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
+        xForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
+        yForWater2 = (halfGridSize + 1) + new Random().nextInt(halfGridSize);
         map[xForWater2][yForWater2] = WATER;
 
         switch (gridSize)

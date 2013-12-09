@@ -9,12 +9,16 @@ import javax.swing.JButton;
  */
 public class Main
 {
-    // TODO (fix) write comment
+    // TODO (fixed) write comment
     
-    public static void main(String[] args)
-    {
-        System.out.println("Bienvenue ! Veuillez choisir la taille de la carte de jeu :");
-        new Game(sizemap).play();   
+    /**
+     * Run the game drawing the map.
+     * @param args
+     * @throws MapException
+     */
+    public static void main(String[] args) throws MapException
+    {   
+        new Game(5).play();   
         
     }
 

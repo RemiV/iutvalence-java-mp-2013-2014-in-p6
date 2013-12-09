@@ -38,6 +38,27 @@ public class Game
      */
     private int AppleCounter;
 
+    /**
+     * Define how many apple the potamochère need.
+     */
+    public int AppleToWin;
+    
+    
+    /**
+     * Define how many apples we need in the easy mode
+     */
+    public final static int APPLE_TO_WIN_TUTO = 3;
+    
+    /**
+     * Define how many apples we need in the medium mode
+     */
+    public final static int APPLE_TO_WIN_MEDIUM = 10;
+    
+    /**
+     * Define how many apples we need in the hard mode
+     */
+    public final static int APPLE_TO_WIN_HARD = 15;
+    
     // TODO (fix) this looks pretty like a local variable instead of a field
     /**
      * notice if it's the capybara turn (0) or the potamochère turn (1).
@@ -67,9 +88,9 @@ public class Game
        switch (gridSize)
        {        
            // TODO (fix) fix warning
-           case map.EASY_MODE_GRID_SIZE : bonus.numberOfApples = bonus.EASY_MODE_NUMBER_OF_APPLES;
-           case map.MEDIUM_MODE_GRID_SIZE : bonus.numberOfApples = bonus.MEDIUM_MODE_NUMBER_OF_APPLES;
-           case map.HARD_MODE_GRID_SIZE : bonus.numberOfApples = bonus.HARD_MODE_NUMBER_OF_APPLES;
+           case Landscape.EASY_MODE_GRID_SIZE : bonus.numberOfApples = bonus.EASY_MODE_NUMBER_OF_APPLES;
+           case Landscape.MEDIUM_MODE_GRID_SIZE : bonus.numberOfApples = bonus.MEDIUM_MODE_NUMBER_OF_APPLES;
+           case Landscape.HARD_MODE_GRID_SIZE : bonus.numberOfApples = bonus.HARD_MODE_NUMBER_OF_APPLES;
        }
            for(int i=0; i<=bonus.numberOfApples; i++)
            {
@@ -280,14 +301,24 @@ public class Game
      */
     public void play()
     {
+        switch(this.map.getSize())
+        {
+        case Landscape.EASY_MODE_GRID_SIZE:
+            AppleToWin = APPLE_TO_WIN_TUTO;
+        case Landscape.MEDIUM_MODE_GRID_SIZE:
+            AppleToWin = APPLE_TO_WIN_MEDIUM;
+        case Landscape.HARD_MODE_GRID_SIZE:
+            AppleToWin = APPLE_TO_WIN_HARD;
+        }
         while (this.ending == false)
         {
+            System.out.println(this.toString());
         // TODO (fix) simplify test
         if (potamochere.getTurn() == true)
         {
             int XToGo = potamochere.whereGo.getX();
             int YToGo = potamochere.whereGo.getY();
-            if ( potamochere.getTurn() != false && map.map[XToGo][YToGo] != map.WATER || map.map[XToGo][YToGo] != map.TREE )
+            if ( potamochere.getTurn() != false && map.map[XToGo][YToGo] != map.WATER || map.map[XToGo][YToGo] != map.TREE || map.map[XToGo][YToGo] != map.RIVER)
             {
                 potamochere.currentLocation = new Location(XToGo, YToGo);
                 map.map[XToGo][YToGo] = map.HOLE;
@@ -300,8 +331,47 @@ public class Game
         {
             int XToGo = capybara.whereGo.getX();
             int YToGo = capybara.whereGo.getY();
-            //TODO (fix) capybara can move only on square next him
+            //TODO (fixed) capybara can move only on square next him
+            if(capybara.getCurrentLocation().getX()-1 <= XToGo && capybara.getCurrentLocation().getX()+1 >= XToGo || capybara.getCurrentLocation().getY()-1 <= YToGo && capybara.getCurrentLocation().getY()+1 >= YToGo)
+            {
+                if (map.map[XToGo][YToGo] != map.HOLE || map.map[XToGo][YToGo] != map.TREE)
+                {
+                    capybara.currentLocation = new Location(XToGo, YToGo);
+                    map.map[XToGo][YToGo] = map.RIVER;
+                    this.arrive(capybara, capybara.currentLocation);
+                    capybara.setTurn();
+                }
+            }
+                
         }
-          }
+        
+        if ( AppleCounter == AppleToWin)
+        {
+            potamochere.win();
+            capybara.loose();
+            this.ending = true;
         }
+        if (capybara.getCurrentLocation().getX()== map.xForWater2 && capybara.getCurrentLocation().getY()== map.yForWater2)
+        {
+            capybara.win();
+            potamochere.loose();
+            this.ending = true;
+        }
+        
+        
+        }
+        }
+    /**
+     * generate the graphic representation of the map
+     */
+    public String toString()
+    {
+        String result = "Bienvenue dans le marais !\n";
+        for (int x = 0; x<= this.map.getSize(); x++)
+            for(int y=0; y<= this.map.getSize(); y++)
+            {
+                result += "[" + this.map.map[x][y] + "]";
+            }
+        return result;
+    }
 }

@@ -28,6 +28,32 @@ public class Player
     public Location whereBonus;
     
     /**
+     * Define if the player win.
+     */
+    private boolean winner;
+    
+    /**
+     * Define if the player loose.
+     */
+    private boolean looser;
+    
+    /**
+     * The player become the winner.
+     */
+    public void win()
+    {
+        this.winner=true;
+    }
+    
+    /**
+     * The player become the looser.
+     */
+    public void loose()
+    {
+        this.looser=true;
+    }
+    
+    /**
      * Define if the player must skip his turn or not;
      */
     private boolean skipTurn;
@@ -59,6 +85,8 @@ public class Player
         this.skipTurn=false;
         this.stayTurn=false;
         this.bird=false;
+        this.winner=false;
+        this.looser=false;
     }
     
     /**
@@ -103,6 +131,14 @@ public class Player
             return true;
         }
         return true;
+    }
+    
+    /**
+     * current location getter
+     */
+    public Location getCurrentLocation()
+    {
+        return this.currentLocation;
     }
     
     /**
